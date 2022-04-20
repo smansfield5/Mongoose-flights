@@ -1,0 +1,64 @@
+<%- include('../partials/header') %>
+
+  <section id="show-page">
+    <h1>Flight Info:</h1>
+    <h4>Airline</h4>
+    <div>
+      <%= flight.airline %>
+    </div>
+    <h4>Airport</h4>
+    <div>
+      <%= flight.airport %>
+    </div>
+    <h4>Flight Number</h4>
+    <div>
+      <%= flight.flightNo %>
+    </div>
+    <h4>Departs</h4>
+    <div>
+      <%= flight.departs %>
+    </div>
+    <h4>Arrivals</h4>
+    <div>
+      <%= flight.arrival %>
+    </div>
+  </section><br>
+
+  <section>
+    <div>Add Destination</div>
+    <form action="/flights" method="POST">
+    <label>Departs Date:
+      <input type="date" name="departs">
+    </label><br>
+    <label>Arrival Date:
+      <input type="date" name="arrival">
+    </label><br>
+    <label>Airline:
+      <select name="airline">
+        <option value="American">American</option>
+        <option value="Southwest">Southwest</option>
+        <option value="United">United</option>
+      </select>
+    </label><br>
+    <label>Airport:
+      <select name="airport">
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>
+      </select>
+
+    </label><br>
+    <label>Flight Number:
+      <input type="number" name="flightNo">
+    </label>
+    <label>
+      <input type="submit">
+    </label>
+    </form>
+  </section>
+
+
+
+  <%- include('../partials/footer') %>
