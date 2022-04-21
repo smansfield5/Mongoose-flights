@@ -24,41 +24,60 @@
     </div>
   </section><br>
 
+
+
   <section>
     <div>Add Destination</div>
-    <form action="/flights" method="POST">
-    <label>Departs Date:
-      <input type="date" name="departs">
-    </label><br>
-    <label>Arrival Date:
-      <input type="date" name="arrival">
-    </label><br>
-    <label>Airline:
-      <select name="airline">
-        <option value="American">American</option>
-        <option value="Southwest">Southwest</option>
-        <option value="United">United</option>
-      </select>
-    </label><br>
-    <label>Airport:
-      <select name="airport">
-        <option value="AUS">AUS</option>
-        <option value="DFW">DFW</option>
-        <option value="DEN">DEN</option>
-        <option value="LAX">LAX</option>
-        <option value="SAN">SAN</option>
-      </select>
+    <form action="/flights/<%= flight._id %>" method="POST">
+      <label>Departs Date:
+        <input type="datetime-local" name="departs">
+      </label><br>
+      <label>Arrival Date:
+        <input type="datetime-local" name="arrival">
+      </label><br>
+      <br>
+      <label>Airport:
+        <select name="airport">
+          <option value="AUS">AUS</option>
+          <option value="DFW">DFW</option>
+          <option value="DEN">DEN</option>
+          <option value="LAX">LAX</option>
+          <option value="SAN">SAN</option>
+        </select>
+        <label>
+          <input type="submit">
+        </label>
+    </form>
 
-    </label><br>
-    <label>Flight Number:
-      <input type="number" name="flightNo">
-    </label>
+  </section>
+  <ul>
+    <% for (let i=0; i < flight.destination.length; i++) { %>
+      <li>
+        <%= flight.destination[i].airport %>
+          <%= flight.destination[i].arrival %>
+      </li>
+      <% } %>
+  </ul>
+
+  <h3>Add Ticket</h3>
+  <form action="/tickets/<%= flight._id %>" method="Get">
     <label>
       <input type="submit">
     </label>
-    </form>
-  </section>
+  </form>
+  <a href="/flights.<%= flight._id %>/tickets/new"></a>
 
+
+
+
+  <ul>
+    <% for (let i=0; i < tickets.length; i++) { %>
+      <li>
+        <%= tickets[i].seat %>
+          <%= tickets[i].price %>
+      </li>
+      <% } %>
+  </ul>
 
 
   <%- include('../partials/footer') %>

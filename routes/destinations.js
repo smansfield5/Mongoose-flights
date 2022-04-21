@@ -3,6 +3,6 @@ const router = express.Router();
 
 const destinationsCtrl = require('../controllers/destinations');
 
-router.put('/flights/:id', destinationsCtrl.update);
+router.post('/flights/:id', destinationsCtrl.create);
 
 module.exports = router;

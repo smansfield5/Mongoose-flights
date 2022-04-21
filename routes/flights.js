@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var flightsCtrl = require('../controllers/flights');
+var ticketsCtrl = require('../controllers/flights');
 
 /* GET users listing. */
 router.get('/', flightsCtrl.index);
@@ -11,8 +12,8 @@ router.get('/:id', flightsCtrl.show);
 
 router.post('/', flightsCtrl.create);
 
-// router.put('/:id', flightsCtrl.update);
+router.get('/:id/tickets/new', ticketsCtrl.new);
 
-
+router.post('/:id/tickets/create', ticketsCtrl.create);
 
 module.exports = router;

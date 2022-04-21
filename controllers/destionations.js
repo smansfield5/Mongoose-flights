@@ -1,1 +1,0 @@
-const Destination = require('../models/flights');
