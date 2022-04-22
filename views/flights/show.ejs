@@ -60,12 +60,11 @@
   </ul>
 
   <h3>Add Ticket</h3>
-  <form action="/tickets/<%= flight._id %>" method="Get">
-    <label>
-      <input type="submit">
-    </label>
-  </form>
-  <a href="/flights.<%= flight._id %>/tickets/new"></a>
+  
+  <label for="seat">Seat</label>
+    <label for="price">Price</label>
+    
+  <a href="/tickets/<%= flight._id %>/new">Submit</a>
 
 
 

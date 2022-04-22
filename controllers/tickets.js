@@ -7,16 +7,13 @@ module.exports = {
 }
 
 function newTicket(req, res) {
-    res.render('tickets/new', { flightId: req.params._id });
+    let flightId = req.params.id
+    res.render('tickets/new', { flightId });
 }
 
 function create(req, res) {
-    Flight.findOne({
-        _id: req.params._id
-    }, function(err, flight) {
-        req.body.flight = flight._id;
-        const ticket = new Ticket(req.body);
-        ticket.save();
-        res.redirect(`'/flights/${flight._id} '`);
-    });
+    req.body.flight = req.params.id;
+    Ticket.create(req.body, function(err, ticket) {
+        res.redirect(`/flights/${req.params.id}`)
+    })
 }

@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const methodOverride = require('method-override');
 
 require('dotenv').config();
 require('./config/database');
@@ -10,7 +11,7 @@ require('./config/database');
 var indexRouter = require('./routes/index');
 var flightsRouter = require('./routes/flights');
 var destinationsRouter = require('./routes/destinations');
-//var ticketsRouter = require('./routes/tickets');
+var ticketsRouter = require('./routes/tickets');
 
 var app = express();
 
@@ -24,11 +25,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/flights', flightsRouter);
-app.use('/destinations', destinationsRouter);
-//app.use('/flights', ticketsRouter)
+app.use('/', destinationsRouter);
+app.use('/tickets', ticketsRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var flightsCtrl = require('../controllers/flights');
-var ticketsCtrl = require('../controllers/flights');
+var ticketsCtrl = require('../controllers/tickets');
 
 /* GET users listing. */
 router.get('/', flightsCtrl.index);

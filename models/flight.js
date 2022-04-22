@@ -6,11 +6,7 @@ const destinationSchema = new Schema ({
     type: String,
     enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN']
   },
-  arrival: {
-    date: function() {
-      return new Date().getFullYear;
-    }
-  }
+  arrival: Date
 });
 
 const flightSchema = new Schema({
